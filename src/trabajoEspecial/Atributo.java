@@ -18,5 +18,14 @@ public class Atributo {
 		return valor;
 	}
 	
-	
+	@Override
+	public boolean equals (Object o) {
+		try {
+			Atributo nuevo= (Atributo)o;
+			return this.getNombre().equals(nuevo.getNombre());
+		}
+		catch (Exception e) {
+			return false;
+		}
+	}
 }

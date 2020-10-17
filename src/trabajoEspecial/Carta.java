@@ -20,5 +20,11 @@ public class Carta {
 		this.nombre = nombre;
 	}
 	
+	public void addAtributo (Atributo atributo) {
+		if (!this.atributos.contains(atributo)) {
+			this.atributos.add(atributo);
+		}
+	}
+	
 	
 }
