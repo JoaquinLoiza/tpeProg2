@@ -28,4 +28,11 @@ public class Atributo {
 			return false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Atributo seleccionado: "+this.getNombre()+ "\nValor "+this.getNombre()+": "+this.getValor();
+	}
+	
+	
 }

@@ -26,5 +26,11 @@ public class Carta {
 		}
 	}
 	
+	public int getTamaño() {
+		return this.atributos.size();
+	}
 	
+	public Atributo getAtributo(int posicion) {
+		return this.atributos.get(posicion);
+	}
 }
