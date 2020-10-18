@@ -12,4 +12,6 @@ public class Mazo {
 		this.cartas = new HashSet <>();
 	}
 	
+	
+	
 }
