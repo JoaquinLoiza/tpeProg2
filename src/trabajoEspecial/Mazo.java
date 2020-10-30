@@ -20,10 +20,6 @@ public class Mazo {
 		this.nombre = nombre;
 	}
 	
-<<<<<<< HEAD
-	
-	
-=======
 	public HashSet<Carta> getCartas() {
 		
 		HashSet<Carta> cartas = new HashSet<>();
@@ -33,5 +29,4 @@ public class Mazo {
 		}
 		return cartas;
 	}
->>>>>>> 3e3f290a93171232a3e47d743c5b6fc564766470
 }
