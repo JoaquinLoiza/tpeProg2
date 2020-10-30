@@ -20,13 +20,11 @@ public class Mazo {
 		this.nombre = nombre;
 	}
 	
+	public void addCartas(Carta carta) {
+		this.cartas.add(carta);
+	}
+	
 	public HashSet<Carta> getCartas() {
-		
-		HashSet<Carta> cartas = new HashSet<>();
-		
-		for(Carta carta : this.cartas) {
-			cartas.add(carta);
-		}
-		return cartas;
+		return new HashSet<Carta>(this.cartas);
 	}
 }
