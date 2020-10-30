@@ -24,7 +24,7 @@ public class Jugador {
 		int tamaño = -1;	
 		if (this.cantCartas() != 0) {
 			tamaño = this.cartas.get(0).getTamaño();
-			return (int)(Math.random()*tamaño+1);
+			return (int)(Math.random()*tamaño);
 		}else
 			return tamaño;
 	}

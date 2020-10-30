@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int cantRondas = 10;
+		int cantRondas = 20;
 		
 		Jugador j1 = new Jugador("Juan");
 		Jugador j2 = new Jugador("Pedro");

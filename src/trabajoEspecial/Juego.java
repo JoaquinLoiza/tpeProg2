@@ -69,13 +69,13 @@ public class Juego {
 		int aux = -1;
 		
 		if (numRonda == 1) {
-			aux = j1.selecAtributo()-1;
+			aux = j1.selecAtributo();
 			
 			System.out.println(j1.getPrimerCarta().getAtributo(aux));
 			System.out.println(j2.getPrimerCarta().getAtributo(aux));
-		} 
+		}
 		else {
-			aux = this.jugadorQueDecide(j1,j2).selecAtributo() -1;
+			aux = this.jugadorQueDecide(j1,j2).selecAtributo();
 			
 			System.out.println(j1.getPrimerCarta().getAtributo(aux));
 			System.out.println(j2.getPrimerCarta().getAtributo(aux));
