@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int cantRondas = 20;
+		int cantRondas = 50;
 		
 		Jugador j1 = new Jugador("Juan");
 		Jugador j2 = new Jugador("Pedro");
@@ -68,19 +68,17 @@ public class Main {
 		mazo1.addCartas(c6);
 		
 		juego.repartirMazo(mazo1, j1, j2);
-		
-		
+				
 		while(j1.cantCartas() != 0 && j2.cantCartas() != 0 &&  juego.getRonda() < juego.getRondasMax()){
 			
 			System.out.println("\nRonda: "+juego.getRonda());
 			
-			System.out.println("ganador: "+ juego.getGanadorRondaAnterior());
+			System.out.println("ganador ronda anterior: "+ "\n"+juego.getGanadorRondaAnterior());
 			
-			System.out.println(juego.ganadorRonda(j1, j2));
+			System.out.println("\n"+juego.ganadorRonda(j1, j2));
 			
 			//Al final
 			juego.setRonda(juego.getRonda()+1);
 		}
 	}
-
 }

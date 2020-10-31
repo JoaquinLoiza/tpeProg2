@@ -1,5 +1,7 @@
 package trabajoEspecial;
 
+import java.util.ArrayList;
+
 public class Juego {
 	
 	private int rondasMax;
@@ -43,10 +45,24 @@ public class Juego {
 	public void setRondasMax(int cant) {
 		this.rondasMax = cant;
 	}
+	
+	private ArrayList<Carta> mezclarMazo(Mazo mazo){
+		
+		ArrayList<Carta> copiaMazo = new ArrayList<>();
+		copiaMazo.addAll(mazo.getCartas());
+		ArrayList<Carta> aux = new ArrayList<>();
+		
+		while(!copiaMazo.isEmpty()){
+			int num = (int)(Math.random()*copiaMazo.size());
+			aux.add(copiaMazo.get(num));
+			copiaMazo.remove(copiaMazo.get(num));	
+		}
+		return aux;
+	}
 
 	public void repartirMazo(Mazo mazo, Jugador j1, Jugador j2) {
 		boolean aux = false;
-		for(Carta carta : mazo.getCartas()) {
+		for(Carta carta : this.mezclarMazo(mazo)) {
 			if (aux == false) {
 				j1.addCartas(carta);
 				aux=true;
@@ -69,16 +85,10 @@ public class Juego {
 		int aux = -1;
 		
 		if (numRonda == 1) {
-			aux = j1.selecAtributo();
-			
-			System.out.println(j1.getPrimerCarta().getAtributo(aux));
-			System.out.println(j2.getPrimerCarta().getAtributo(aux));
+			aux = j2.selecAtributo();
 		}
 		else {
 			aux = this.jugadorQueDecide(j1,j2).selecAtributo();
-			
-			System.out.println(j1.getPrimerCarta().getAtributo(aux));
-			System.out.println(j2.getPrimerCarta().getAtributo(aux));
 		}
 		compararAtributos(j1,j2,aux);
 		return jugadorGanadorRonda;
