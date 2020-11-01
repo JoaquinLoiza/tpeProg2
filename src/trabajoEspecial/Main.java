@@ -9,7 +9,7 @@ public class Main {
 		Jugador j1 = new Jugador("Juan");
 		Jugador j2 = new Jugador("Pedro");
 		Mazo mazo1 = new Mazo("Mazo de super heroes");
-		Juego juego = new Juego(cantRondas,j1,j2);
+		Juego juego = new Juego(cantRondas,j1,j2, mazo1);
 		
 		Carta c1 = new Carta("Superman");
 		Carta c2 = new Carta("Linterna Verde");
@@ -67,18 +67,6 @@ public class Main {
 		mazo1.addCartas(c5);
 		mazo1.addCartas(c6);
 		
-		juego.repartirMazo(mazo1, j1, j2);
-				
-		while(j1.cantCartas() != 0 && j2.cantCartas() != 0 &&  juego.getRonda() < juego.getRondasMax()){
-			
-			System.out.println("\nRonda: "+juego.getRonda());
-			
-			System.out.println("ganador ronda anterior: "+ "\n"+juego.getGanadorRondaAnterior());
-			
-			System.out.println("\n"+juego.ganadorRonda(j1, j2));
-			
-			//Al final
-			juego.setRonda(juego.getRonda()+1);
-		}
+		juego.jugar();
 	}
 }

@@ -46,9 +46,4 @@ public class Jugador {
 	public int cantCartas() {
 		return cartas.size();
 	}
-
-	@Override
-	public String toString() {	
-		return "El jugador: " + this.getNombre() + "\nCantidad de cartas: "+this.cantCartas();
-	}
 }
