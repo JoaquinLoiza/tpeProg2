@@ -21,12 +21,12 @@ public class Jugador {
 	}
 	
 	public int selecAtributo() {
-		int tamaño = -1;	
+		int tamano = -1;	
 		if (this.cantCartas() != 0) {
-			tamaño = this.cartas.get(0).getTamaño();
-			return (int)(Math.random()*tamaño);
+			tamano = this.cartas.get(0).getTamano();
+			return (int)(Math.random()*tamano);
 		}else
-			return tamaño;
+			return tamano;
 	}
 	
 	public Carta getPrimerCarta() {

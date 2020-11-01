@@ -26,7 +26,7 @@ public class Carta {
 		}
 	}
 	
-	public int getTamaño() {
+	public int getTamano() {
 		return this.atributos.size();
 	}
 	
