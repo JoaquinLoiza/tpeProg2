@@ -145,11 +145,47 @@ public class Juego {
 		j1.addCartas(cartaPerdida);
 	}
 	
-	public void jugar(){
+	private boolean tieneCartas (Jugador jugador) {
+		if (jugador.cantCartas() == 0) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private boolean ambosTienenCartas() {
+		return this.tieneCartas(this.j1) && this.tieneCartas(j2);
+	}
+	
+	private boolean terminoRondas () {
+		return numRonda <= this.rondasMax;
+	}
+	
+	public String getGanador(){
+		if (!this.tieneCartas(this.j1)) {
+			return this.j2.getNombre();
+		}
+		else if (!this.tieneCartas(this.j2)) {
+			return this.j1.getNombre();
+		}
+		else {
+			if(this.j1.cantCartas() > this.j2.cantCartas()) {
+				return this.j1.getNombre();
+			}
+			else if (this.j1.cantCartas() < this.j2.cantCartas()) {
+				return this.j2.getNombre();
+			}
+			else {
+				return "Hubo empate";
+			}
+		}
+	}
+	
+	public String jugar(){
 		
 		this.repartirMazo();
 
-		while(this.j1.cantCartas() != 0 && this.j2.cantCartas() != 0 &&  numRonda < this.rondasMax){
+		while(this.ambosTienenCartas() &&  this.terminoRondas()){
 			
 			this.ganadorRonda();
 
@@ -157,6 +193,12 @@ public class Juego {
 			if (empate == false) {
 				this.setRonda(numRonda+1);
 			}
+		}
+		if (this.getGanador() !="Hubo empate"){
+			return "El ganador es: " + this.getGanador();
+		}
+		else {
+			return this.getGanador();
 		}
 	}
 

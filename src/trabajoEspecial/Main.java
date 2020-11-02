@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int cantRondas = 50;
+		int cantRondas = 20;
 		
 		Jugador j1 = new Jugador("Juan");
 		Jugador j2 = new Jugador("Pedro");
@@ -67,6 +67,6 @@ public class Main {
 		mazo1.addCartas(c5);
 		mazo1.addCartas(c6);
 		
-		juego.jugar();
+		System.out.println(juego.jugar());
 	}
 }
