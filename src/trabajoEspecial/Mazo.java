@@ -20,7 +20,7 @@ public class Mazo {
 		this.nombre = nombre;
 	}
 	
-	public void addCartas(Carta carta) {
+	public void addCarta(Carta carta) {
 		this.cartas.add(carta);
 	}
 	
