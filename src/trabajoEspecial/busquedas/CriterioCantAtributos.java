@@ -12,6 +12,6 @@ public class CriterioCantAtributos extends Busqueda {
 	
 	@Override
 	public boolean cumple(Carta carta) {
-		return this.c.getTamano() == carta.getTamano();
+		return this.c.getTamanio() == carta.getTamanio();
 	}
 }

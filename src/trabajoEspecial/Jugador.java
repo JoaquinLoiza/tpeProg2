@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Jugador {
 
 	protected String nombre;
-	private ArrayList <Carta> cartas;
+	protected ArrayList <Carta> cartas;
 	
 	public Jugador (String nombre) {
 		this.nombre= nombre;
@@ -21,14 +21,12 @@ public class Jugador {
 	}
 	
 	public String selecAtributo() {
-		ArrayList<String>claves= new ArrayList<>();
+		ArrayList<String>claves = new ArrayList<>();
 		for (String i : this.getPrimerCarta().getAtributos().keySet()) {
 			 claves.add(i);
-			}
-		int aux= (int)Math.random()*claves.size();
-		
+		}
+		int aux = (int)(Math.random()*claves.size());
 		return claves.get(aux);
-		
 	}
 	
 	public Carta getPrimerCarta() {
@@ -48,4 +46,5 @@ public class Jugador {
 	public int cantCartas() {
 		return cartas.size();
 	}
+
 }

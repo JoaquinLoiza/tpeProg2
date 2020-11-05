@@ -26,7 +26,7 @@ public class Carta {
 		}
 	}
 	
-	public int getTamano() {
+	public int getTamanio() {
 		return this.atributos.size();
 	}
 	
@@ -34,7 +34,7 @@ public class Carta {
 		return new HashMap<>(this.atributos);
 	}
 	
-	public int getAtributo (String nombre) {
+	public int getAtributo(String nombre) {
 		return this.atributos.get(nombre);
 	}
 }

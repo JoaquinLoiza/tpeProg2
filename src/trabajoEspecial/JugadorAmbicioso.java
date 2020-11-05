@@ -1,52 +1,26 @@
 package trabajoEspecial;
 
-import java.util.ArrayList;
-
 public class JugadorAmbicioso extends Jugador{
-
-	private ArrayList <Carta> cartas;
-	
 	
 	public JugadorAmbicioso(String nombre) {
 		super(nombre);
-		this.cartas= new ArrayList<>();
-	}
-	
-	public void addCartas(Carta carta) {
-		super.addCartas(carta);;
-	}
-	
-	public Carta getPrimerCarta() {
-		return super.getPrimerCarta();
 	}
 	
 	@Override
-	public int selecAtributo() {
-		int aux= -1;
+	public String selecAtributo() {
+		int aux= 0;
+		String mayor= "";
 		if (this.cartas.size()>0) {
-			Carta c= this.getPrimerCarta();
-			for (int i=0; i<c.getTamano(); i++) {
-				Atributo a= c.getAtributo(i);
-				if ((int)a.getValor() > aux) {
-					aux= (int)a.getValor();
+			Carta c= super.getPrimerCarta();
+			for (String key :c.getAtributos().keySet()) {
+				System.out.println("Valor actual de " + key + " :" +  c.getAtributo(key));
+				if (c.getAtributo(key) > aux) {
+					aux= c.getAtributo(key);
+					mayor = key;
 				}
 			}
 		}
-		
-		return aux;
+		return mayor;
 	}
-
-	public void moverCartaAlFinal() {
-		super.moverCartaAlFinal();
-	}
-
-	public void eliminarCarta() {
-		super.eliminarCarta();;
-	}
-	
-	public int cantCartas() {
-		return super.cantCartas();
-	}
-
 
 }

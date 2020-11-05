@@ -4,15 +4,23 @@ import trabajoEspecial.Carta;
 
 public class CriterioNomAtribIguales extends Busqueda {
 	
-	private String nombre;
+	private Carta carta;
 	
-	public CriterioNomAtribIguales(String nombre) {
-		this.nombre = nombre;
+	public CriterioNomAtribIguales(Carta carta) {
+		this.carta = carta;
 	}
 	
 	@Override
-	public boolean cumple(Carta carta) {
-		return carta.getAtributos().containsKey(this.nombre);
+	public boolean cumple(Carta carta2) {
+		
+		boolean cumple = true;
+		
+		for (String i : this.carta.getAtributos().keySet()) {
+			if(!carta2.getAtributos().containsKey(i)) {				
+				cumple = false;
+			}
+		}
+		return cumple;
 	}
 
 }

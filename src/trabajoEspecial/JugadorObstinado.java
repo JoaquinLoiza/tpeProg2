@@ -1,55 +1,24 @@
 package trabajoEspecial;
 
-import java.util.ArrayList;
-
 public class JugadorObstinado extends Jugador{
 
-	private ArrayList <Carta> cartas;
-	private int atrbutoSeleccionado;
+	private String atributoSeleccionado;
 	
 	public JugadorObstinado (String nombre) {
 		super(nombre);
-		this.cartas= new ArrayList <>();
+		this.atributoSeleccionado = "";
 	}
 	
-	public void setAtributo(int num) {
-		this.atrbutoSeleccionado= num;
-	}
-	
-	
-	public void addCartas(Carta carta) {
-		super.addCartas(carta);;
-	}
-	
-	public Carta getPrimerCarta() {
-		return super.getPrimerCarta();
-	}
-	
-	public void moverCartaAlFinal() {
-		super.moverCartaAlFinal();
+	public void setAtributo(String clave) {
+		this.atributoSeleccionado= clave;
 	}
 
-	public void eliminarCarta() {
-		super.eliminarCarta();;
-	}
-	
-	public int cantCartas() {
-		return super.cantCartas();
-	}
-
-	private void atributoObstinado () {
-		Carta c= this.getPrimerCarta();
-		int aux= (int) (Math.random()* (c.getTamano()));
-		this.setAtributo(aux);
-	}
-	
 	@Override
-	public int selecAtributo() {
-		if (this.cartas.size() > 0) {
-			return this.atrbutoSeleccionado;
+	public String selecAtributo() {
+		if (atributoSeleccionado == "") {
+			this.setAtributo(super.selecAtributo());
 		}
-		
-		return -1;
+		return this.atributoSeleccionado;
 	}
 
 }
