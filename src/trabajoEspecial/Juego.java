@@ -13,7 +13,6 @@ public class Juego {
 	private String nombreAtributo = "";
 	private int valorAtributoJ1 = -1;
 	private int valorAtributoJ2 = -1;
-	private boolean empate = false;
 	
 	public Juego(int rondas, Jugador j1, Jugador j2, Mazo mazo) {
 		this.rondasMax = rondas;
@@ -94,7 +93,6 @@ public class Juego {
 
 	private void compararAtributos() {
 		
-		empate= false;
 		int valorJ1= this.j1.getPrimerCarta().getAtributo(this.nombreAtributo);
 		int valorJ2= this.j2.getPrimerCarta().getAtributo(this.nombreAtributo);
 		setAtributos(valorJ1, valorJ2);
@@ -110,7 +108,6 @@ public class Juego {
 		else {
 			this.j1.moverCartaAlFinal();
 			this.j2.moverCartaAlFinal();
-			empate= true;
 		}
 	}
 	
@@ -163,18 +160,15 @@ public class Juego {
 		this.mazo.eliminarCartasInvalidas();
 		
 		this.repartirMazo();
-		
-		System.out.println(j1.cantCartas());
-		System.out.println(j2.cantCartas());
 
 		while(this.ambosTienenCartas() &&  this.terminoRondas()){
 			
 			this.ganadorRonda();
 
 			System.out.println(this);
-			if (empate == false) {
-				this.setRonda(numRonda+1);
-			}
+			
+			this.setRonda(numRonda+1);
+
 		}
 		if (this.getGanador() !="Hubo empate"){
 			return "El ganador es: " + this.getGanador();

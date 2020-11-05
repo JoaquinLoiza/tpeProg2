@@ -13,7 +13,6 @@ public class JugadorAmbicioso extends Jugador{
 		if (this.cartas.size()>0) {
 			Carta c= super.getPrimerCarta();
 			for (String key :c.getAtributos().keySet()) {
-				System.out.println("Valor actual de " + key + " :" +  c.getAtributo(key));
 				if (c.getAtributo(key) > aux) {
 					aux= c.getAtributo(key);
 					mayor = key;
