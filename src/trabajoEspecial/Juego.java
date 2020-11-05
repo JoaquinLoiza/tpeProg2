@@ -24,12 +24,12 @@ public class Juego {
 	private Mazo mazo;
 	
 	//Averiguar si corresponden aca o en el Main
-	public static int numRonda = 1;
-	public static Jugador ganadorRondaAnt = null;
-	public static int posicionAtributo = -1;
-	public static Atributo atrJ1 = null;
-	public static Atributo atrJ2 = null;
-	public static boolean empate = false;
+	private int numRonda = 1;
+	private Jugador ganadorRondaAnt = null;
+	private String nombreAtributo = "";
+	private int valorAtributoJ1 = -1;
+	private int valorAtributoJ2 = -1;
+	private boolean empate = false;
 	
 	public Juego(int rondas, Jugador j1, Jugador j2, String nombre, String rutaJson) {
 		this.rondasMax = rondas;
@@ -64,13 +64,13 @@ public class Juego {
 		numRonda = num;
 	}
 	
-	private void setPosicion(int num) {
-		posicionAtributo = num;
+	private void setNombreAtributo(String nombre) {
+		nombreAtributo = nombre;
 	}
 	
-	private void setAtributos(Atributo a1, Atributo a2) {
-		atrJ1 = a1;
-		atrJ2 = a2;
+	private void setAtributos(int a1, int a2) {
+		valorAtributoJ1 = a1;
+		valorAtributoJ2 = a2;
 	}
 	
 	private Mazo crearMazo(String nombre, String jsonFile) {
@@ -92,8 +92,7 @@ public class Juego {
                 JsonObject atributos = (JsonObject) carta.getJsonObject("atributos");
                 
                 for (String nombreAtributo:atributos.keySet()){                	
-                	Atributo a = new Atributo(nombreAtributo, atributos.getInt(nombreAtributo));
-                	c.addAtributo(a);
+                	c.addAtributo(nombreAtributo, atributos.getInt(nombreAtributo));
                 }
                 mazo.addCarta(c);
             }
@@ -152,38 +151,32 @@ public class Juego {
 			return this.j2;
 	}
 	
-	private void buscarPosicion() {
-		int aux = -1;
-		
+	private void seleccionarAtributo() {
 		if (numRonda == 1) {
-			aux = this.j1.selecAtributo();
-			this.setPosicion(aux);
+			this.setNombreAtributo(this.j1.selecAtributo()); 
 		}
 		else {
-			aux = this.turnoJugador().selecAtributo();
-			this.setPosicion(aux);
+			this.setNombreAtributo(this.turnoJugador().selecAtributo()); 
 		}
 	}
 	
 	private void ganadorRonda() {
-		this.buscarPosicion();
+		this.seleccionarAtributo();
 		compararAtributos();
 	}
 
 	private void compararAtributos() {
 		
 		empate= false;
-		Atributo aJ1 = this.j1.getPrimerCarta().getAtributo(posicionAtributo);
-		Atributo aJ2 = this.j2.getPrimerCarta().getAtributo(posicionAtributo);
-		setAtributos(aJ1, aJ2);
-		int valorCartaJ1 = (int)atrJ1.getValor();
-		int valorCartaJ2 = (int)atrJ2.getValor();
+		int valorJ1= this.j1.getPrimerCarta().getAtributo(this.nombreAtributo);
+		int valorJ2= this.j2.getPrimerCarta().getAtributo(this.nombreAtributo);
+		setAtributos(valorJ1, valorJ2);
 		
-		if(valorCartaJ1 > valorCartaJ2) {
+		if(valorJ1 > valorJ2) {
 			moverCartas(this.j1, this.j2);
 			ganadorRondaAnt = this.j1;
 		}
-		else if (valorCartaJ1 < valorCartaJ2) {
+		else if (valorJ1 < valorJ2) {
 			moverCartas(this.j2, this.j1);
 			ganadorRondaAnt = this.j2;
 		}
@@ -264,9 +257,9 @@ public class Juego {
 	public String toString() {
 		
 		return  "\nRonda N°: " + numRonda +
-				"\nAtributo Seleccionado: " + atrJ1.getNombre() +
-				"\nValor J1: " + atrJ1.getValor() +
-				"\nValor J2: " + atrJ2.getValor() +
+				"\nAtributo Seleccionado: " + this.nombreAtributo +
+				"\nValor J1: " + this.valorAtributoJ1 +
+				"\nValor J2: " + this.valorAtributoJ2 +
 				"\nGanador ronda: " + ganadorRondaAnt.getNombre() +
 				"\nCantidad cartas " + this.j1.getNombre() +": "+j1.cantCartas() +
 				"\nCantidad cartas " + this.j2.getNombre() +": "+j2.cantCartas() + "\n";

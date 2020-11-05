@@ -1,15 +1,15 @@
 package trabajoEspecial;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Carta {
 
-	private ArrayList <Atributo> atributos;
+	private HashMap <String, Integer> atributos;
 	private String nombre;
 	
 	public Carta (String nombre) {
 		this.nombre= nombre;
-		this.atributos= new ArrayList<>();
+		this.atributos= new HashMap<>();
 	}
 
 	public String getNombre() {
@@ -20,9 +20,9 @@ public class Carta {
 		this.nombre = nombre;
 	}
 	
-	public void addAtributo (Atributo atributo) {
-		if (!this.atributos.contains(atributo)) {
-			this.atributos.add(atributo);
+	public void addAtributo (String nombre, int num) {
+		if(this.atributos.get(nombre) == null) {
+			this.atributos.put(nombre, num);
 		}
 	}
 	
@@ -30,7 +30,11 @@ public class Carta {
 		return this.atributos.size();
 	}
 	
-	public Atributo getAtributo(int posicion) {
-		return this.atributos.get(posicion);
+	public HashMap<String, Integer> getAtributos() {
+		return new HashMap<>(this.atributos);
+	}
+	
+	public int getAtributo (String nombre) {
+		return this.atributos.get(nombre);
 	}
 }

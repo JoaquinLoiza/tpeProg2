@@ -3,9 +3,9 @@ package trabajoEspecial;
 public class Atributo {
 
 	private String nombre;
-	private Object valor;
+	private int valor;
 	
-	public Atributo (String nombre, Object valor) {
+	public Atributo (String nombre, int valor) {
 		this.nombre= nombre;
 		this.valor= valor;
 	}
@@ -14,7 +14,7 @@ public class Atributo {
 		return nombre;
 	}
 
-	public Object getValor() {
+	public int getValor() {
 		return valor;
 	}
 	
