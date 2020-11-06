@@ -49,6 +49,8 @@ public class Main {
 		Juego juego = new Juego(cantRondas,j1,j2,mazoSuperHeroes);
 		
 		System.out.println(juego.jugar());
+		
+		System.out.println(juego.getHistorial());
 	}
 	
 	public static ArrayList<Carta> crearMazo(String jsonFile) {

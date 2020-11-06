@@ -19,7 +19,7 @@ public abstract class Pocion {
 
 	@Override
 	public String toString() {
-		return "Nombre de la poción: " + this.nombre;
+		return this.nombre;
 	} 
 	
 	

@@ -1,5 +1,7 @@
 package trabajoEspecial;
 
+import java.util.ArrayList;
+
 public class Juego {
 	
 	private int rondasMax;
@@ -8,17 +10,29 @@ public class Juego {
 	private Mazo mazo;
 	
 	//Cambian de valor en cada ronda
-	private int numRonda = 1;
-	private Jugador ganadorRondaAnt = null;
-	private String nombreAtributo = "";
-	private int valorAtributoJ1 = -1;
-	private int valorAtributoJ2 = -1;
+	private ArrayList<String> historial;
+	private int numRonda;
+	private Jugador ganadorRondaAnt;
+	private Carta cartaJ1;
+	private Carta cartaJ2;
+	private String nombreAtributo;
+	private int valorAtributoJ1;
+	private int valorAtributoJ2;
 	
 	public Juego(int rondas, Jugador j1, Jugador j2, Mazo mazo) {
 		this.rondasMax = rondas;
 		this.j1 = j1;
 		this.j2 = j2;
-		this.mazo = mazo;		
+		this.mazo = mazo;
+		this.historial = new ArrayList<>();
+		this.numRonda = 1;
+		this.ganadorRondaAnt = null;
+		this.cartaJ1 = null;
+		this.cartaJ2 = null;
+		this.nombreAtributo = "";
+		this.valorAtributoJ1 = -1;
+		this.valorAtributoJ2 = -1;
+		
 	}
 	
 	//------- Getters and Setters--------
@@ -39,6 +53,10 @@ public class Juego {
 		return this.mazo;
 	}
 	
+	public ArrayList<String> getHistorial() {
+		return new ArrayList<>(this.historial);
+	}
+	
 	public void setRondasMax(int cant) {
 		this.rondasMax = cant;
 	}
@@ -54,6 +72,11 @@ public class Juego {
 	private void setAtributos(int a1, int a2) {
 		valorAtributoJ1 = a1;
 		valorAtributoJ2 = a2;
+	}
+	
+	private void setCartas() {
+		this.cartaJ1 = this.j1.getPrimerCarta();
+		this.cartaJ2 = this.j2.getPrimerCarta();
 	}
 
 	private void repartirMazo() {
@@ -86,14 +109,13 @@ public class Juego {
 		}
 	}
 	
-	private void ganadorRonda() {
+	private void iniciarJugada() {
 		this.seleccionarAtributo();
 		compararAtributos();
 	}
 	
 	private int getValorAtributo(Jugador j) {
 		Carta c= j.getPrimerCarta();
-		System.out.println("Tiene pocion: " + c.getPocion());
 		if (c.getPocion() == null) {
 			return c.getAtributo(this.nombreAtributo);
 		}
@@ -107,7 +129,7 @@ public class Juego {
 		int valorJ1= this.getValorAtributo(this.j1);
 		int valorJ2= this.getValorAtributo(this.j2);
 		setAtributos(valorJ1, valorJ2);
-		
+		setCartas();
 		if(valorJ1 > valorJ2) {
 			moverCartas(this.j1, this.j2);
 			ganadorRondaAnt = this.j1;
@@ -170,14 +192,14 @@ public class Juego {
 		
 		this.mazo.eliminarCartasInvalidas();
 		this.mazo.addPocionACarta();
-		
 		this.repartirMazo();
 
 		while(this.ambosTienenCartas() &&  this.terminoRondas()){
 			
-			this.ganadorRonda();
+			this.iniciarJugada();
 
-			System.out.println(this);
+			//System.out.println(this);
+			this.historial.add(this.toString());
 			
 			this.setRonda(numRonda+1);
 
@@ -195,6 +217,10 @@ public class Juego {
 		
 		return  "\nRonda N°: " + numRonda +
 				"\nAtributo Seleccionado: " + this.nombreAtributo +
+				"\nCarta J1: " + this.cartaJ1.getNombre() +
+				"\nCarta J2: " + this.cartaJ2.getNombre() +
+				"\nPocion j1: " + this.cartaJ1.getPocion() +
+				"\nPocion j2: " + this.cartaJ2.getPocion() +
 				"\nValor J1: " + this.valorAtributoJ1 +
 				"\nValor J2: " + this.valorAtributoJ2 +
 				"\nGanador ronda: " + ganadorRondaAnt.getNombre() +
