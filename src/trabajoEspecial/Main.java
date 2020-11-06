@@ -15,7 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int cantRondas = 20;
+		int cantRondas = 50;
 		String nomMazo = "Mazo super heroes";
 		String rutaJson = "./superheroes.json";
 		
@@ -23,7 +23,21 @@ public class Main {
 		Jugador j2 = new JugadorAmbicioso("Pedro");
 		Mazo mazoSuperHeroes = new Mazo(nomMazo);
 		
+		Pocion p1= new PocionKriptonita(100);
+		Pocion p2= new PocionKriptonita(100);
+		Pocion p3= new PocionKriptonita(100);
+		Pocion p4= new PocionKriptonita(100);
+		Pocion p5= new PocionKriptonita(100);
+		
 		mazoSuperHeroes.addCartas(crearMazo(rutaJson));
+		mazoSuperHeroes.addPocion(p1);
+		mazoSuperHeroes.addPocion(p2);
+		mazoSuperHeroes.addPocion(p3);
+		mazoSuperHeroes.addPocion(p4);
+		mazoSuperHeroes.addPocion(p5);
+		
+		mazoSuperHeroes.addPocionACarta();
+		
 		Juego juego = new Juego(cantRondas,j1,j2,mazoSuperHeroes);
 		
 		System.out.println(juego.jugar());

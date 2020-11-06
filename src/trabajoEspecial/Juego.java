@@ -90,11 +90,22 @@ public class Juego {
 		this.seleccionarAtributo();
 		compararAtributos();
 	}
+	
+	private int getValorAtributo(Jugador j) {
+		Carta c= j.getPrimerCarta();
+		System.out.println("Tiene pocion: " + c.getPocion());
+		if (c.getPocion() == null) {
+			return c.getAtributo(this.nombreAtributo);
+		}
+		else {
+			return c.getPocion().aplicar(c.getAtributo(this.nombreAtributo));
+		}
+	}
 
 	private void compararAtributos() {
 		
-		int valorJ1= this.j1.getPrimerCarta().getAtributo(this.nombreAtributo);
-		int valorJ2= this.j2.getPrimerCarta().getAtributo(this.nombreAtributo);
+		int valorJ1= this.getValorAtributo(this.j1);
+		int valorJ2= this.getValorAtributo(this.j2);
 		setAtributos(valorJ1, valorJ2);
 		
 		if(valorJ1 > valorJ2) {
