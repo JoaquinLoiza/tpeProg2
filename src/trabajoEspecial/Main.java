@@ -17,7 +17,7 @@ public class Main {
 		
 		int cantRondas = 50;
 		String nomMazo = "Mazo super heroes";
-		String rutaJson = "./superheroes.json";
+		String rutaJson = "./autos.json";
 		
 		Jugador j1 = new JugadorObstinado("Juan");
 		Jugador j2 = new JugadorAmbicioso("Pedro");
@@ -48,7 +48,7 @@ public class Main {
 		
 		Juego juego = new Juego(cantRondas,j1,j2,mazoSuperHeroes);
 		
-		System.out.println(juego.jugar());
+		juego.jugar();
 		
 		System.out.println(juego.getHistorial());
 	}

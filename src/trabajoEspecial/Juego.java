@@ -26,13 +26,12 @@ public class Juego {
 		this.mazo = mazo;
 		this.historial = new ArrayList<>();
 		this.numRonda = 1;
-		this.ganadorRondaAnt = null;
+		this.ganadorRondaAnt = j1;
 		this.cartaJ1 = null;
 		this.cartaJ2 = null;
 		this.nombreAtributo = "";
 		this.valorAtributoJ1 = -1;
 		this.valorAtributoJ2 = -1;
-		
 	}
 	
 	//------- Getters and Setters--------
@@ -101,12 +100,7 @@ public class Juego {
 	}
 	
 	private void seleccionarAtributo() {
-		if (numRonda == 1) {
-			this.setNombreAtributo(this.j1.selecAtributo()); 
-		}
-		else {
-			this.setNombreAtributo(this.turnoJugador().selecAtributo()); 
-		}
+		this.setNombreAtributo(this.turnoJugador().selecAtributo()); 
 	}
 	
 	private void iniciarJugada() {
@@ -188,7 +182,7 @@ public class Juego {
 		}
 	}
 	
-	public String jugar(){
+	public void jugar(){
 		
 		this.mazo.eliminarCartasInvalidas();
 		this.mazo.addPocionACarta();
@@ -197,18 +191,17 @@ public class Juego {
 		while(this.ambosTienenCartas() &&  this.terminoRondas()){
 			
 			this.iniciarJugada();
-
-			//System.out.println(this);
+			
 			this.historial.add(this.toString());
 			
 			this.setRonda(numRonda+1);
 
 		}
 		if (this.getGanador() !="Hubo empate"){
-			return "El ganador es: " + this.getGanador();
+			this.historial.add("\nEl ganador del juego es: " + this.getGanador());
 		}
 		else {
-			return this.getGanador();
+			this.historial.add("\n" + this.getGanador());
 		}
 	}
 
