@@ -7,10 +7,12 @@ public class Mazo {
 
 	private String nombre;
 	private HashSet <Carta> cartas;
+	private ArrayList <Pocion> pociones;
 	
 	public Mazo (String nombre) {
 		this.nombre= nombre;
 		this.cartas = new HashSet <>();
+		this.pociones= new ArrayList<>();
 	}
 
 	public String getNombre() {
@@ -27,6 +29,19 @@ public class Mazo {
 	
 	public HashSet<Carta> getCartas() {
 		return new HashSet<Carta>(this.cartas);
+	}
+	
+	public void addPocion (Pocion p) {
+		this.pociones.add(p);
+	}
+	
+	public void addPocionACarta() {
+		for (Carta c: this.cartas) {
+			while (this.pociones.size() > 0) {
+				c.setPocion(this.pociones.get(0));
+				this.pociones.remove(0);
+			}
+		}
 	}
 	
 	public void eliminarCartasInvalidas() {

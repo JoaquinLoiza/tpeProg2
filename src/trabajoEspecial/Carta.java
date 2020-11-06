@@ -6,9 +6,11 @@ public class Carta {
 
 	private HashMap <String, Integer> atributos;
 	private String nombre;
+	private Pocion pocion;
 	
 	public Carta (String nombre) {
 		this.nombre= nombre;
+		this.pocion= null;
 		this.atributos= new HashMap<>();
 	}
 
@@ -36,5 +38,13 @@ public class Carta {
 	
 	public int getAtributo(String nombre) {
 		return this.atributos.get(nombre);
+	}
+	
+	public Pocion getPocion () {
+		return this.pocion;
+	}
+	
+	public void setPocion (Pocion p) {
+		this.pocion = p;
 	}
 }
