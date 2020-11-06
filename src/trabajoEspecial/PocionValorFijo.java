@@ -4,7 +4,8 @@ public class PocionValorFijo extends Pocion{
 
 	private int valor;
 	
-	public PocionValorFijo (int valor) {
+	public PocionValorFijo (String nombre, int valor) {
+		super(nombre);
 		this.valor= valor;
 	}
 

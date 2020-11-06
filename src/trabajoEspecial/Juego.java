@@ -169,6 +169,7 @@ public class Juego {
 	public String jugar(){
 		
 		this.mazo.eliminarCartasInvalidas();
+		this.mazo.addPocionACarta();
 		
 		this.repartirMazo();
 

@@ -4,7 +4,8 @@ public class PocionFortalecedora extends Pocion{
 
 	private int porcentaje;
 	
-	public PocionFortalecedora (int porcentaje) {
+	public PocionFortalecedora (String nombre, int porcentaje) {
+		super(nombre);
 		this.porcentaje= porcentaje;
 	}
 
