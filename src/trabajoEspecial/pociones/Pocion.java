@@ -1,4 +1,4 @@
-package trabajoEspecial;
+package trabajoEspecial.pociones;
 
 public abstract class Pocion {
 

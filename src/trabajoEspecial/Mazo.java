@@ -3,6 +3,8 @@ package trabajoEspecial;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import trabajoEspecial.pociones.Pocion;
+
 public class Mazo {
 
 	private String nombre;

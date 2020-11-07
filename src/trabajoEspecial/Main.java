@@ -11,13 +11,17 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import trabajoEspecial.pociones.Pocion;
+import trabajoEspecial.pociones.PocionKriptonita;
+import trabajoEspecial.pociones.PocionValorFijo;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
 		int cantRondas = 50;
 		String nomMazo = "Mazo super heroes";
-		String rutaJson = "./autos.json";
+		String rutaJson = "./superheroes.json";
 		
 		Jugador j1 = new JugadorObstinado("Juan");
 		Jugador j2 = new JugadorAmbicioso("Pedro");

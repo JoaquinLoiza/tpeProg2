@@ -1,4 +1,4 @@
-package trabajoEspecial;
+package trabajoEspecial.pociones;
 
 public class PocionValorFijo extends Pocion{
 

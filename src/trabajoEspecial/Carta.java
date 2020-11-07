@@ -2,6 +2,8 @@ package trabajoEspecial;
 
 import java.util.HashMap;
 
+import trabajoEspecial.pociones.Pocion;
+
 public class Carta {
 
 	private HashMap <String, Integer> atributos;
