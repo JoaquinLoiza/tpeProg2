@@ -11,6 +11,10 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import trabajoEspecial.estrategias.Estrategia;
+import trabajoEspecial.estrategias.EstrategiaAmbicioso;
+import trabajoEspecial.estrategias.EstrategiaObstinado;
+import trabajoEspecial.estrategias.EstrategiaTimbero;
 import trabajoEspecial.pociones.Pocion;
 import trabajoEspecial.pociones.PocionKriptonita;
 import trabajoEspecial.pociones.PocionValorFijo;
@@ -22,9 +26,12 @@ public class Main {
 		int cantRondas = 50;
 		String nomMazo = "Mazo super heroes";
 		String rutaJson = "./superheroes.json";
+		Estrategia timbero = new EstrategiaTimbero();
+		Estrategia ambicioso = new EstrategiaAmbicioso();
+		Estrategia obstinado = new EstrategiaObstinado();
 		
-		Jugador j1 = new JugadorObstinado("Juan");
-		Jugador j2 = new JugadorAmbicioso("Pedro");
+		Jugador j1 = new Jugador("Juan", ambicioso);
+		Jugador j2 = new Jugador("Pedro", obstinado);
 		Mazo mazoSuperHeroes = new Mazo(nomMazo);
 		
 		Pocion p1 = new PocionKriptonita("Kriptonita",100);

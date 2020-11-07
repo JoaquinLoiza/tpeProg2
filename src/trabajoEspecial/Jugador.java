@@ -2,14 +2,18 @@ package trabajoEspecial;
 
 import java.util.ArrayList;
 
+import trabajoEspecial.estrategias.Estrategia;
+
 public class Jugador {
 
 	protected String nombre;
 	protected ArrayList <Carta> cartas;
+	private Estrategia estrategia;
 	
-	public Jugador (String nombre) {
-		this.nombre= nombre;
-		this.cartas= new ArrayList<>();
+	public Jugador (String nombre, Estrategia estrategia) {
+		this.nombre = nombre;
+		this.cartas = new ArrayList<>();
+		this.estrategia = estrategia;
 	}
 
 	public String getNombre() {
@@ -20,13 +24,12 @@ public class Jugador {
 		this.cartas.add(carta);
 	}
 	
+	public void setEstrategia(Estrategia e) {
+		this.estrategia = e;
+	}
+	
 	public String selecAtributo() {
-		ArrayList<String>claves = new ArrayList<>();
-		for (String i : this.getPrimerCarta().getAtributos().keySet()) {
-			 claves.add(i);
-		}
-		int aux = (int)(Math.random()*claves.size());
-		return claves.get(aux);
+		return this.estrategia.seleccionarAtributo(this.getPrimerCarta());
 	}
 	
 	public Carta getPrimerCarta() {
