@@ -23,28 +23,12 @@ public class Main {
 		Jugador j2 = new JugadorAmbicioso("Pedro");
 		Mazo mazoSuperHeroes = new Mazo(nomMazo);
 		
-		Pocion p1= new PocionKriptonita("Kriptonita",100);
-		Pocion p2= new PocionKriptonita("Kriptonita",100);
-		Pocion p3= new PocionKriptonita("Kriptonita",100);
-		Pocion p4= new PocionKriptonita("Kriptonita",100);
-		Pocion p5= new PocionKriptonita("Kriptonita",100);
-		Pocion p6= new PocionValorFijo("Valor fijo",100000000);
-		Pocion p7= new PocionValorFijo("Valor fijo",100000000);
-		Pocion p8= new PocionValorFijo("Valor fijo",100000000);
-		Pocion p9= new PocionValorFijo("Valor fijo",100000000);
-		Pocion p10= new PocionValorFijo("Valor fijo",100000000);
-		
+		Pocion p1 = new PocionKriptonita("Kriptonita",100);
+		Pocion p2 = new PocionValorFijo("Valor fijo",1000000);
+
 		mazoSuperHeroes.addCartas(crearMazo(rutaJson));
 		mazoSuperHeroes.addPocion(p1);
 		mazoSuperHeroes.addPocion(p2);
-		mazoSuperHeroes.addPocion(p3);
-		mazoSuperHeroes.addPocion(p4);
-		mazoSuperHeroes.addPocion(p5);
-		mazoSuperHeroes.addPocion(p6);
-		mazoSuperHeroes.addPocion(p7);
-		mazoSuperHeroes.addPocion(p8);
-		mazoSuperHeroes.addPocion(p9);
-		mazoSuperHeroes.addPocion(p10);
 		
 		Juego juego = new Juego(cantRondas,j1,j2,mazoSuperHeroes);
 		

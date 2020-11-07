@@ -9,8 +9,8 @@ public class Carta {
 	private Pocion pocion;
 	
 	public Carta (String nombre) {
-		this.nombre= nombre;
-		this.pocion= null;
+		this.nombre = nombre;
+		this.pocion = null;
 		this.atributos= new HashMap<>();
 	}
 
@@ -40,11 +40,11 @@ public class Carta {
 		return this.atributos.get(nombre);
 	}
 	
-	public Pocion getPocion () {
+	public Pocion getPocion() {
 		return this.pocion;
 	}
 	
-	public void setPocion (Pocion p) {
+	public void setPocion(Pocion p) {
 		this.pocion = p;
 	}
 }
