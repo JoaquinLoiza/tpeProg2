@@ -10,8 +10,8 @@ public class EstrategiaAmbicioso extends Estrategia {
 		String mayor= "";
 	
 		for (String key : carta.getAtributos().keySet()) {
-			if (carta.getAtributo(key) > aux) {
-				aux= carta.getAtributo(key);
+			if (carta.getValor(key) > aux) {
+				aux= carta.getValor(key);
 				mayor = key;
 			}
 		}

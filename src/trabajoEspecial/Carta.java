@@ -38,7 +38,19 @@ public class Carta {
 		return new HashMap<>(this.atributos);
 	}
 	
+	public boolean esCoherente(Carta c) {
+		return this.atributos.keySet().equals(c.getAtributos().keySet());
+	}
+	
 	public int getAtributo(String nombre) {
+		if (this.pocion != null) {
+			return this.pocion.aplicar(this.atributos.get(nombre));
+		} else {
+			return this.atributos.get(nombre);
+		}
+	}
+	
+	public int getValor(String nombre) {
 		return this.atributos.get(nombre);
 	}
 	
@@ -49,4 +61,5 @@ public class Carta {
 	public void setPocion(Pocion p) {
 		this.pocion = p;
 	}
+
 }

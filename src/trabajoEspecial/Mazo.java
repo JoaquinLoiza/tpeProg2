@@ -1,10 +1,9 @@
 package trabajoEspecial;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
-
 import trabajoEspecial.pociones.Pocion;
-
 
 public class Mazo {
 
@@ -54,7 +53,7 @@ public class Mazo {
 			if(aux1.isEmpty()) {
 				aux1.add(carta);
 			}
-			else if (aux1.get(0).getAtributos().keySet().equals(carta.getAtributos().keySet())){
+			else if (aux1.get(0).esCoherente(carta)){
 				aux1.add(carta);
 			}
 			else {
@@ -70,17 +69,9 @@ public class Mazo {
 		}
 	}
 
-	public ArrayList<Carta> mezclarMazo(){
-		
-		ArrayList<Carta> copiaMazo = new ArrayList<>();
-		copiaMazo.addAll(this.cartas);
-		ArrayList<Carta> aux = new ArrayList<>();
-		
-		while(!copiaMazo.isEmpty()){
-			int num = (int)(Math.random()*copiaMazo.size());
-			aux.add(copiaMazo.get(num));
-			copiaMazo.remove(copiaMazo.get(num));	
-		}
-		return aux;
+	public ArrayList<Carta> mezclarMazo(){	
+		ArrayList<Carta> copiaMazo = new ArrayList<>(this.cartas);
+		Collections.shuffle(copiaMazo);
+		return copiaMazo;	
 	}
 }

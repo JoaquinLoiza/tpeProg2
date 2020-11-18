@@ -5,17 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-
 import trabajoEspecial.estrategias.Estrategia;
 import trabajoEspecial.estrategias.EstrategiaAmbicioso;
 import trabajoEspecial.estrategias.EstrategiaObstinado;
-import trabajoEspecial.estrategias.EstrategiaTimbero;
+//import trabajoEspecial.estrategias.EstrategiaTimbero;
 import trabajoEspecial.pociones.Pocion;
+import trabajoEspecial.pociones.PocionCocktail;
+import trabajoEspecial.pociones.PocionFortalecedora;
 import trabajoEspecial.pociones.PocionKriptonita;
 import trabajoEspecial.pociones.PocionValorFijo;
 
@@ -26,7 +26,7 @@ public class Main {
 		int cantRondas = 50;
 		String nomMazo = "Mazo super heroes";
 		String rutaJson = "./superheroes.json";
-		Estrategia timbero = new EstrategiaTimbero();
+//		Estrategia timbero = new EstrategiaTimbero();
 		Estrategia ambicioso = new EstrategiaAmbicioso();
 		Estrategia obstinado = new EstrategiaObstinado();
 		
@@ -35,11 +35,23 @@ public class Main {
 		Mazo mazoSuperHeroes = new Mazo(nomMazo);
 		
 		Pocion p1 = new PocionKriptonita("Kriptonita",100);
-		Pocion p2 = new PocionValorFijo("Valor fijo",1000000);
+		Pocion p2 = new PocionKriptonita("Kriptonita",1000000);
+		Pocion p3 = new PocionValorFijo("Valor Fijo",100);
+		Pocion p4 = new PocionValorFijo("Valor Fijo",1000000);
+		Pocion p5 = new PocionCocktail("Cocktail",p1,p2);
+		Pocion p6 = new PocionCocktail("Cocktail",p3,p4);
+		Pocion p7 = new PocionFortalecedora("Fortalecedora",65);
+		Pocion p8 = new PocionFortalecedora("Fortalecedora",80);
 
 		mazoSuperHeroes.addCartas(crearMazo(rutaJson));
 		mazoSuperHeroes.addPocion(p1);
 		mazoSuperHeroes.addPocion(p2);
+		mazoSuperHeroes.addPocion(p3);
+		mazoSuperHeroes.addPocion(p4);
+		mazoSuperHeroes.addPocion(p5);
+		mazoSuperHeroes.addPocion(p6);
+		mazoSuperHeroes.addPocion(p7);
+		mazoSuperHeroes.addPocion(p8);
 		
 		Juego juego = new Juego(cantRondas,j1,j2,mazoSuperHeroes);
 		

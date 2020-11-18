@@ -93,7 +93,7 @@ public class Juego {
 	}
 	
 	private Jugador turnoJugador() {
-		if (ganadorRondaAnt == this.j1) {
+		if (ganadorRondaAnt.equals(this.j1)) {
 			return this.j1;
 		} else
 			return this.j2;
@@ -107,21 +107,11 @@ public class Juego {
 		this.seleccionarAtributo();
 		compararAtributos();
 	}
-	
-	private int getValorAtributo(Jugador j) {
-		Carta c= j.getPrimerCarta();
-		if (c.getPocion() == null) {
-			return c.getAtributo(this.nombreAtributo);
-		}
-		else {
-			return c.getPocion().aplicar(c.getAtributo(this.nombreAtributo));
-		}
-	}
 
 	private void compararAtributos() {
 		
-		int valorJ1= this.getValorAtributo(this.j1);
-		int valorJ2= this.getValorAtributo(this.j2);
+		int valorJ1= this.j1.getPrimerCarta().getAtributo(this.nombreAtributo);
+		int valorJ2= this.j2.getPrimerCarta().getAtributo(this.nombreAtributo);
 		setAtributos(valorJ1, valorJ2);
 		setCartas();
 		if(valorJ1 > valorJ2) {
@@ -192,32 +182,28 @@ public class Juego {
 			
 			this.iniciarJugada();
 			
-			this.historial.add(this.toString());
+			this.historial.add(
+					"\nRonda N°: " + numRonda +
+					"\nAtributo Seleccionado: " + this.nombreAtributo +
+					"\nCarta J1: " + this.cartaJ1.getNombre() +
+					"\nCarta J2: " + this.cartaJ2.getNombre() +
+					"\nPocion j1: " + this.cartaJ1.getPocion() +
+					"\nPocion j2: " + this.cartaJ2.getPocion() +
+					"\nValor J1: " + this.valorAtributoJ1 +
+					"\nValor J2: " + this.valorAtributoJ2 +
+					"\nGanador ronda: " + ganadorRondaAnt.getNombre() +
+					"\nCantidad cartas " + this.j1.getNombre() +": "+j1.cantCartas() +
+					"\nCantidad cartas " + this.j2.getNombre() +": "+j2.cantCartas() + "\n"
+			);
 			
 			this.setRonda(numRonda+1);
 
 		}
-		if (this.getGanador() !="Hubo empate"){
+		if (this.getGanador() != "Hubo empate"){
 			this.historial.add("\nEl ganador del juego es: " + this.getGanador());
 		}
 		else {
 			this.historial.add("\n" + this.getGanador());
 		}
-	}
-
-	@Override
-	public String toString() {
-		
-		return  "\nRonda N°: " + numRonda +
-				"\nAtributo Seleccionado: " + this.nombreAtributo +
-				"\nCarta J1: " + this.cartaJ1.getNombre() +
-				"\nCarta J2: " + this.cartaJ2.getNombre() +
-				"\nPocion j1: " + this.cartaJ1.getPocion() +
-				"\nPocion j2: " + this.cartaJ2.getPocion() +
-				"\nValor J1: " + this.valorAtributoJ1 +
-				"\nValor J2: " + this.valorAtributoJ2 +
-				"\nGanador ronda: " + ganadorRondaAnt.getNombre() +
-				"\nCantidad cartas " + this.j1.getNombre() +": "+j1.cantCartas() +
-				"\nCantidad cartas " + this.j2.getNombre() +": "+j2.cantCartas() + "\n";
 	}
 }
